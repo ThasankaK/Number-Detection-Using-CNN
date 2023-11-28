@@ -82,7 +82,7 @@ AugmentedData = ImageDataGenerator(width_shift_range=0.1, # %
                              zoom_range=0.2, # %
                              shear_range=0.1, # %
                              rotation_range=10) # °
-AugmentedData.fit(X_train) # Generating augmented images as batches that get sent back to X_train while we are training
+AugmentedData.fit(X_train) # Generating augmented images as batches that get sent back to X_train while training
 
 #-----------------------------------------------------------------------#
 # 4. CNN
