@@ -120,9 +120,9 @@ model = CNN_Model()
 print(model.summary())
 
 history = model.fit_generator(AugmentedData.flow(X_train, Y_train,
-                                 batch_size = 50),
-                                 steps_per_epoch = len(X_train)//50,
-                                 epochs = 50,
+                                 batch_size = 50), # number of training samples used in one iteration
+                                 steps_per_epoch = len(X_train)//50, # total number of training samples / batch size
+                                 epochs = 50, # one full cycle through training dataset
                                  validation_data = (X_validation, Y_validation),
                                  shuffle = 1)
 
