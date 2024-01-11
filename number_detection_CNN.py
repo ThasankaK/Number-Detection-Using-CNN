@@ -43,7 +43,7 @@ print(f"Original Set of Data: {images.shape} \n")
 
 
 X_train, X_test, Y_train, Y_test = train_test_split(images, labelNum, test_size=0.2) # Train 80%, Test 20%, function ensures data is randomized
-X_train, X_validation, Y_train, Y_validation = train_test_split(X_train, Y_train, test_size=0.2) 
+X_train, X_validation, Y_train, Y_validation = train_test_split(X_train, Y_train, test_size=0.2) # Train 64%, Test 20%, Validation 16%
 
 print(f"Data to Train: {X_train.shape}")
 print(f"Data to Test: {X_test.shape}")
@@ -71,7 +71,7 @@ X_train = np.array(list(map(Preprocessing, X_train)))
 X_test = np.array(list(map(Preprocessing, X_test)))
 X_validation = np.array(list(map(Preprocessing, X_validation)))
 
-# Add a depth of 1 for the CNN
+# Add a depth of 1 for the CNN, tells that only 1 color channel per image. If RGB, put 3
 
 X_train = X_train.reshape(X_train.shape[0], X_train.shape[1], X_train.shape[2], 1)
 X_test = X_test.reshape(X_test.shape[0], X_test.shape[1], X_test.shape[2], 1)
