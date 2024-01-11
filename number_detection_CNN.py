@@ -102,17 +102,17 @@ def CNN_Model():
 
     model = Sequential() # Keras Sequential model
 
-    model.add((Conv2D(numOfFilters, filterSize1, input_shape=(32, 32, 1), activation='relu'))) 
-    model.add((Conv2D(numOfFilters, filterSize1, activation='relu')))
-    model.add(MaxPooling2D(pool_size=poolSize))
-    model.add((Conv2D(numOfFilters//2, filterSize2, activation='relu')))
-    model.add((Conv2D(numOfFilters//2, filterSize2, activation='relu')))
-    model.add(MaxPooling2D(pool_size=poolSize))
-    model.add(Dropout(0.5)) 
-    model.add(Flatten())
-    model.add(Dense(numOfNode, activation='relu'))
+    model.add((Conv2D(numOfFilters, filterSize1, input_shape=(32, 32, 1), activation='relu'))) # 28x28x60
+    model.add((Conv2D(numOfFilters, filterSize1, activation='relu'))) # 24x24x60
+    model.add(MaxPooling2D(pool_size=poolSize)) # 12x12x60
+    model.add((Conv2D(numOfFilters//2, filterSize2, activation='relu'))) # 21x21x30
+    model.add((Conv2D(numOfFilters//2, filterSize2, activation='relu'))) # 18x18x30
+    model.add(MaxPooling2D(pool_size=poolSize)) # 9x9x30
+    model.add(Dropout(0.5)) # half the neurons are inactive, only used in training
+    model.add(Flatten()) # 9x9x30 = 2430
+    model.add(Dense(numOfNode, activation='relu')) 
     model.add(Dropout(0.5))
-    model.add(Dense(10, activation='softmax'))
+    model.add(Dense(10, activation='softmax')) # 10 nodes for 10 classes
     model.compile(Adam(lr=0.001), loss='categorical_crossentropy', metrics=['accuracy'])
     return model
 
